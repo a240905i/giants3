@@ -1,0 +1,37 @@
+function searchPlayer() {
+  const input = numberInput.value.trim();
+  result.innerHTML = "";
+
+  if (!input) {
+    result.textContent = "背番号または名前を入力してください";
+    return;
+  }
+
+  // ① 背番号検索（ゼロ埋め対応）
+  const paddedInput = input.padStart(3, "0");
+  let player = players[input] || players[paddedInput];
+  let number = input;
+
+  // ② 名前検索（部分一致）
+  if (!player) {
+    const foundKey = Object.keys(players).find(key =>
+      players[key].name.replace(/\s/g, "").includes(input.replace(/\s/g, ""))
+    );
+
+    if (foundKey) {
+      player = players[foundKey];
+      number = foundKey;
+    }
+  }
+
+  // ③ 表示
+  if (player) {
+    result.innerHTML = `
+      <h2>${player.name}</h2>
+      <p>背番号：${number}</p>
+      <p>ポジション：${player.position}</p>
+    `;
+  } else {
+    result.textContent = "該当する選手が見つかりません";
+  }
+}
