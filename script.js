@@ -107,7 +107,8 @@ const players = {
   "024": { name: "坂本達也", position: "捕手（育成）" },
 
   // 内野手
-  "0": { name: "増田大輝", position: "内野手" }, // ※CSV上、湯浅大選手と番号重複
+  "0": { name: "増田大輝", position: "内野手" },
+  "00": { name: "湯浅大", position: "内野手" },
   "2": { name: "吉川尚輝", position: "内野手" },
   "5": { name: "門脇誠", position: "内野手" },
   "6": { name: "坂本勇人", position: "内野手" },
@@ -166,3 +167,4 @@ document.getElementById("searchBtn").addEventListener("click", function () {
     result.textContent = "その背番号の選手はいません";
   }
 });
+
